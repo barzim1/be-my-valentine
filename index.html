@@ -23,5 +23,33 @@
     </main>
 
     <script type="module" src="script.js"></script>
+    <audio id="myAudio" loop>
+  <source src="muzyka.mp3" type="audio/mpeg">
+  Twoja przeglądarka nie obsługuje dźwięku.
+</audio>
+
+<button id="musicControl" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.7);">
+  🎵
+</button>
+
+<script>
+  const audio = document.getElementById("myAudio");
+  const btn = document.getElementById("musicControl");
+
+  btn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      btn.innerHTML = "⏸️";
+    } else {
+      audio.pause();
+      btn.innerHTML = "🎵";
+    }
+  });
+
+  // Próba autoodtwarzania przy pierwszym kliknięciu gdziekolwiek na stronie
+  document.addEventListener('click', function() {
+      audio.play();
+  }, { once: true });
+</script>
   </body>
 </html>
